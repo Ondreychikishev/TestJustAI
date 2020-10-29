@@ -1,0 +1,76 @@
+name: hoff-bot-staff
+
+botEngine: v2
+language: ru
+
+sts:
+    noMatchThreshold: 0.2
+
+caila:
+    noMatchThreshold: 0.2
+
+
+entryPoint: main.sc
+
+# тестовый кейс "test.xml" нельзя комментировать, он должен быть всегда включенным.
+tests:
+    include:
+        - test.xml
+        - test_main-sc.xml
+        # - test_S001-01-KOB-faq.xml
+        # - test_S001-02-KDS-faq.xml
+        # - test_S001-03-KME-faq.xml
+        # - test_S001-04-KPO-faq.xml
+        # - test_S001-05-KVY-faq.xml
+        # - test_S001-06-KNA-faq.xml
+        # - test_S001-07-KAO-faq.xml
+        # - test_S001-08-KDE-faq.xml
+        # - test_S001-09-KRA-faq.xml
+        # - test_S001-10-KOT-faq.xml
+
+#injector:
+
+
+messages:
+    onError:
+        defaultMessage: Ошибка.
+        locales:
+            ru: Ошибка.
+            en: Oops! I have a bug in my program.
+
+dependencies:
+  - name: common
+    type: git
+    url: https://bitbucket.org/just-ai/zb-common
+    version: heads/master
+    
+nlp:
+    morphology: pyMorphy
+    tokenizer: myStem
+    lengthLimit:
+        symbols: 1200
+    vocabFile: common-vocabulary.json
+    speller:
+        dictionary: prepared-ruscorpora.txt
+    vocabulary: common-vocabulary.json
+    timeLimit:
+        enabled: true
+        timeout: 10000
+
+
+classifier:
+    enable: true
+    engine: sts
+    noMatchThreshold: 0.2
+    parameters:
+        algorithm: aligner2
+
+scriptsPreLoad:
+  global:
+   - /jslib/moment.min.js
+   - /jslib/underscore.js
+   - /jsapi/common.js
+   - /jsapi/http.js
+  local:
+   - /jsapi/mail.js
+   - /jsapi/reactions.js
