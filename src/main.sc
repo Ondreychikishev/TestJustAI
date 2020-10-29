@@ -47,11 +47,11 @@ init:
 
 # Запрос переопределение всех ошибок
 
-#    bind("onAnyError", function($context) {
-#        $jsapi.context().session.OperatorTransFlag = true;                      //# Если возникла любая ошибка, то разрешено переключить на оператора сразу (пользоватиельская переменная)
-#        $reactions.answer('К сожалению, по техническим причинам я не смогу сейчас помочь. Попробуйте переключиться на оператора, отправив фразу "[Переключить на оператора]" в чат или обратитесь позже.');
-#        $reactions.inlineButtons({text: "Переключить на оператора", transition: "/Operator"})
-#    });
+    # bind("onAnyError", function($context) {
+    #     $jsapi.context().session.OperatorTransFlag = true;                      //# Если возникла любая ошибка, то разрешено переключить на оператора сразу (пользоватиельская переменная)
+    #     $reactions.answer('К сожалению, по техническим причинам я не смогу сейчас помочь. Попробуйте переключиться на оператора, отправив фразу "[Переключить на оператора]" в чат или обратитесь позже.');
+    #     $reactions.inlineButtons({text: "Переключить на оператора", transition: "/Operator"})
+    # });
 
         # или <a href="https://hoff.ru/feedback" target="_blank">отправить email в рубрику «Напишите нам» на сайте hoff.ru</a>
         # $reactions.inlineButtons({text: "Форма обращения по Email", url: "https://hoff.ru/feedback"});
@@ -303,7 +303,6 @@ theme: /
         q!: ошибка перехода
         go!: /dsdsa
 
-    
     state: Начало
         intent!: /Общие/MainMenu
         q!: ((*start* *) | *старт | *ыефке | *cnfhn)
